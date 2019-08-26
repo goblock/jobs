@@ -18,7 +18,7 @@ func Parallel(slice interface{}, max int, fnc func(i int)) {
 
 	for i := 0; i < l; i = i + max {
 		x := i + max
-		if x >= l {
+		if x > l {
 			x = l
 		}
 		w.Add(x - i)
