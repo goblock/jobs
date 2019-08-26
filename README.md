@@ -12,19 +12,19 @@ go get -u github.com/goblock/jobs
 package main
 
 import (
-  	"errors"
+	"fmt"
 
-  	"github.com/goblock/jobs"
+	"github.com/goblock/jobs"
 )
 
 func main() {
-    data := []int{1,2,3,4,5,6,7}
+	data := []int{1, 2, 3, 4, 5, 6, 7}
 
-    // run with 3 go routines
-    job.Parallel(data, 3, func(i int) {
-        data[i]++
-    })
-    fmt.Println(data)
+	// run with 3 go routines
+	jobs.Parallel(data, 3, func(i int) {
+		data[i]++
+	})
+	fmt.Println(data)
 }
 ```
 
