@@ -37,4 +37,4 @@ func main() {
 - Create new Pull Request
 
 ---
-> GitHub [@goblock](https://github.com/goblock) &nbsp;&middot;&nbsp;
+> GitHub [@goblock](https://github.com/goblock)
