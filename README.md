@@ -36,3 +36,5 @@ func main() {
 - Push to the branch (`git push origin my-branch`)
 - Create new Pull Request
 
+---
+> GitHub [@goblock](https://github.com/goblock) &nbsp;&middot;&nbsp;
