@@ -3,7 +3,7 @@ Go jobs executes provided job on a slice in parallel with the limit of total num
 
 ## Installation
 ```bash
-go get -u github.com/rafaeljesus/parallel-fn
+go get -u github.com/goblock/jobs
 ```
 
 ## Usage
