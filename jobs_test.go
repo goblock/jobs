@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestJobutil(t *testing.T) {
+func TestJobsParallel(t *testing.T) {
 	d1 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
 	d2 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
 	for j := 1; j < len(d1)*2; j++ {
@@ -18,4 +18,21 @@ func TestJobutil(t *testing.T) {
 		})
 		assert.ElementsMatch(t, d1, d2)
 	}
+}
+
+func TestJobsRun(t *testing.T) {
+	d1 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+	d2 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+	f1 := func() {
+		for i := range d1 {
+			d1[i] *= 2
+		}
+	}
+	f2 := func() {
+		for i := range d1 {
+			d2[i] *= 2
+		}
+	}
+	Run(f1, f2)
+	assert.ElementsMatch(t, d1, d2)
 }
