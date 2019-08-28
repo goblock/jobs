@@ -44,3 +44,29 @@ func Run(funcs ...func()) {
 	}
 	w.Wait()
 }
+
+// Do excutes each function in the provided slice concurrently and return when all done
+// max defines the max number of workers to launch, when it's set to 0, the len of the slice is used
+func Do(funcs []func(), max int) {
+	var w sync.WaitGroup
+	l := len(funcs)
+
+	if max <= 0 {
+		max = l
+	}
+
+	for i := 0; i < l; i = i + max {
+		x := i + max
+		if x > l {
+			x = l
+		}
+		w.Add(x - i)
+		for j := i; j < x; j++ {
+			go func(k int) {
+				defer w.Done()
+				funcs[k]()
+			}(j)
+		}
+		w.Wait()
+	}
+}

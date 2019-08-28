@@ -29,4 +29,9 @@ func main() {
 	}
 	jobs.Run(f1, f2)
 	fmt.Println(data, data2)
+
+	// using jobs.Do
+	funcs := []func(){f1, f2}
+	jobs.Do(funcs, 0)
+	fmt.Println(data, data2)
 }

@@ -36,3 +36,21 @@ func TestJobsRun(t *testing.T) {
 	Run(f1, f2)
 	assert.ElementsMatch(t, d1, d2)
 }
+
+func TestJobsDo(t *testing.T) {
+	d1 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+	d2 := []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+	f1 := func() {
+		for i := range d1 {
+			d1[i] *= 2
+		}
+	}
+	f2 := func() {
+		for i := range d1 {
+			d2[i] *= 2
+		}
+	}
+	funcs := []func(){f1, f2}
+	Do(funcs, 0)
+	assert.ElementsMatch(t, d1, d2)
+}
